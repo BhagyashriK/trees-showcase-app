@@ -8,6 +8,8 @@ import Message from "../../components/message/message.index";
 import { Showcase } from "./trees.style";
 import { Container, Column } from "../../../styles/layout/layout.index";
 
+import { isEmptyObj } from "../../../utilities/empty-object.index";
+
 const BASE_CHUNK_SIZE = 2;
 
 const Trees = ({ getTrees }) => {
@@ -55,7 +57,9 @@ const Trees = ({ getTrees }) => {
           {isLoading && <Loader />}
 
           {/* Show empty message if trees list is empty or error message if fetch fails*/}
-          {message && <Message message={message.text} type={message.type} />}
+          {!isEmptyObj(message) && (
+            <Message message={message.text} type={message.type} />
+          )}
 
           {/* Column 1 */}
           <Column data-testid="col1">

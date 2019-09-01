@@ -26,24 +26,24 @@ test("Should render species of the tree", () => {
   expect(componentWrapper).toContainElement(species);
 });
 
-test("Image should be hidden by default", () => {
+test("Tree Image should be hidden by default", () => {
   const { getByTestId } = render(<Tree {...mockedProps} />);
   const componentWrapper = getByTestId("tree");
   const image = document.getElementsByTagName("img");
   expect(componentWrapper).not.toContainHTML(image);
 });
 
-test('Should show image on click of "SHOW TREE" button', () => {
+test('Should show tree image on click of "SHOW IMAGE" button', () => {
   const { getByTestId } = render(<Tree {...mockedProps} />);
   const componentWrapper = getByTestId("tree");
   const toggleBtn = getByTestId("toggle-btn");
   fireEvent.click(toggleBtn);
   const image = getByTestId("tree-img");
   expect(componentWrapper).toContainElement(image);
-  expect(toggleBtn.innerHTML).toBe("Hide Tree");
+  expect(toggleBtn.innerHTML).toBe("Hide Image");
 });
 
-test('Should hide image on click of "HIDE TREE" button', () => {
+test('Should hide tree image on click of "HIDE IMAGE" button', () => {
   const { getByTestId } = render(<Tree {...mockedProps} />);
   const componentWrapper = getByTestId("tree");
   const toggleBtn = getByTestId("toggle-btn");
@@ -51,5 +51,5 @@ test('Should hide image on click of "HIDE TREE" button', () => {
   fireEvent.click(toggleBtn);
   const image = document.getElementsByTagName("img");
   expect(componentWrapper).not.toContainHTML(image);
-  expect(toggleBtn.innerHTML).toBe("Show Tree");
+  expect(toggleBtn.innerHTML).toBe("Show Image");
 });

@@ -1,11 +1,9 @@
-//import fetchJsonp from "fetch-jsonp";
-
+// Fetch Tree list using FETCH API can be moved to interceptor to handle headers, errors etc
 export const getTrees = () => {
-  const url =
-    "https://s3.eu-central-1.amazonaws.com/ecosia-frontend-developer/trees.json";
+  const url = `${process.env.REACT_APP_API_BASE_URL}ecosia-frontend-developer/trees.json`;
 
   return fetch(url)
     .then(response => response.json())
     .then(response => response.trees)
-    .catch(error => error);
+    .catch(error => Promise.reject(error.message));
 };

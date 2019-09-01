@@ -1,22 +1,33 @@
 import React, { useState } from "react";
-import { Tile, Image, SecondaryText } from "./tree.style";
+import PropTypes from "prop-types";
+
 import { Button } from "../../../styles/button/button.index";
+import { Tile, Image, SubHeading } from "./tree.style";
 
 const Tree = ({ name, species_name, image }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const toggleVisiblity = () => {
-    setIsVisible(!isVisible);
+  const [isImageVisible, setIsImageVisible] = useState(false);
+  const toggleImageVisiblity = () => {
+    setIsImageVisible(!isImageVisible);
   };
+
   return (
     <Tile data-testid="tree">
       <h2>{name}</h2>
-      <SecondaryText>Species: {species_name}</SecondaryText>
-      {isVisible && <Image data-testid="tree-img" src={image} alt={name} />}
-      <Button data-testid="toggle-btn" onClick={toggleVisiblity}>
-        {isVisible ? "Hide Tree" : "Show Tree"}
+      {species_name && <SubHeading>Species: {species_name}</SubHeading>}
+      {isImageVisible && (
+        <Image data-testid="tree-img" src={image} alt={name} />
+      )}
+      <Button data-testid="toggle-btn" onClick={toggleImageVisiblity}>
+        {isImageVisible ? "Hide Image" : "Show Image"}
       </Button>
     </Tile>
   );
+};
+
+Tree.propTypes = {
+  name: PropTypes.string,
+  species_name: PropTypes.string,
+  image: PropTypes.string
 };
 
 export default Tree;

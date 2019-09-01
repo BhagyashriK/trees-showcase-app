@@ -22,13 +22,13 @@ export const Image = styled.img`
   margin-bottom: 30px;
 `;
 
-export const SecondaryText = styled.p`
-  color: ${props => props.theme.SECONDARY_TEXT_COLOR};
+export const SubHeading = styled.p`
+  color: ${props => props.theme.SUB_HEADING_TEXT_COLOR};
   margin-bottom: 20px;
 `;
 
-SecondaryText.defaultProps = {
+SubHeading.defaultProps = {
   theme: {
-    SECONDARY_TEXT_COLOR: "#dbedf3"
+    SUB_HEADING_TEXT_COLOR: "#dbedf3"
   }
 };
